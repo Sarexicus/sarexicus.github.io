@@ -1,0 +1,112 @@
+/* SIDEWAYS mobile mode! */
+@media only screen and (max-height:700px)
+{
+    #aboutme
+    {
+        position: relative;
+        border-top-left-radius: 0;  
+    }
+
+    #inputContainer
+    {
+        position:fixed;
+        width:70%;
+        bottom:0;
+        left:15%;
+        background: var(--color-tone-3);
+    }
+}
+
+/* mobile mode! */
+@media only screen and (max-width:800px)
+{
+    #aboutme
+    {
+        position: relative;
+        border-top-left-radius: 0;  
+        padding-bottom:96px;
+    }
+
+    #board
+    {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .sqGuess
+    {
+        flex-basis: 100%;
+        grid-column-start: span 5;
+    }
+
+    .square
+    {
+        min-width: 1vmin;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-weight: bold;
+
+        text-align: center;
+        overflow-wrap: break-all;
+        word-break: break-all;
+        hyphens: auto;
+    }
+
+    .modal-content
+    {
+        width: 85%;
+        min-width: auto;
+    }
+
+    .desktop-desc
+    {
+        display: none;
+    }
+
+    .mobile-desc
+    {
+        display: inline;
+    }
+
+}
+
+/* mobile mode! */
+@media only screen and (max-width:650px)
+{
+    .square
+    {
+        font-size: 5vmin;
+    }
+
+    
+    #inputContainer
+    {
+        z-index: 9;
+        position:fixed;
+        width:100%;
+        bottom:0;
+        background: var(--color-tone-3);
+        display:block;
+        padding:8px 0px;
+    }
+
+    #spellLabel
+    {
+        display: block;
+    }
+
+    #spellInput
+    {
+        width:80%;
+        min-height: 32px;
+        font-size:1em;
+    }
+
+    #spellSubmit
+    {
+        width:15%;
+    }
+    
+}

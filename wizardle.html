@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="wizardle/styles/stylesheet.css">
     <link rel="stylesheet" href="wizardle/styles/wordle.css">
     <link rel="stylesheet" href="wizardle/styles/main.css">
+    <link rel="stylesheet" href="wizardle/styles/mobile.css">
 
     <link rel="icon" type="image/x-icon" href="/wizardle/favicon.ico">
 
@@ -17,89 +19,104 @@
     <title>Wizardle - A daily "spell"ing game</title>
 </head>
 
-<body class="">
-    <div id="container">
-        <div id="game">
-            <header>
-                <button class="header-button header-left" id="help-button"><i class="fa-regular fa-circle-question"></i></button>
-                <!-- <button class="header-button header-right">Button</button> -->
-                <button class="header-button header-right" onclick="toggle_darkvision()"><i class="fa-solid fa-moon"></i></button>
-                <h1 class="title">Wizardle</h1>
-            </header>
-            <div id="help-modal-container">
+<body class="nightmode">
+    <div id="everything-container">
+        <div id="container">
+            <div id="game">
+                <header>
+                    <button class="header-button header-left" id="help-button"><i
+                            class="fa-regular fa-circle-question"></i></button>
+                    <!-- <button class="header-button header-right">Button</button> -->
+                    <button class="header-button header-right" onclick="toggle_darkvision()"><i
+                            class="fa-solid fa-moon"></i></button>
+                    <h1 class="title">Wizardle</h1>
+                </header>
+                <div id="help-modal-container">
 
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close-button">&times;</span>
-                    <h2>How To Play Wizardle</h2>
-                    <p>Guess the SPELL in 7 attempts. You know how to play Wordle.</p>
-                    <p>Each guess must be a valid <cite>Dungeons and Dragons: 5th Edition</cite> spell. <br />
-                    <p></p>
-                    <h3>Examples</h3> 
-                    <div class="square button-demo correct flip">Transmutation</div>
-                    <p>The school of the SPELL is correctly identified as Transmutation.</p>
-                    <div class="square button-demo close lower flip">5</div>
-                    <p>The level of the SPELL is lower than 5.</p>
-                    <div class="square button-demo close flip">V, S</div>
-                    <p>The SPELL's components contain Verbal and Somatic Components.</p>
-                    <div class="square button-demo nope flip">V, S, M</div>
-                    <p>The SPELL's components do not contain every component listed.</p>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>How To Play Wizardle</h2>
+                        <p>Guess the SPELL in 7 attempts. You know how to play Wordle.</p>
+                        <p>Each guess must be a valid <cite>Dungeons and Dragons: 5th Edition</cite> spell. <br />
+                        <p></p>
+                        <h3>Examples</h3>
+                        <div class="square button-demo correct flip">Transmutation</div>
+                        <p>The school of the SPELL is correctly identified as Transmutation.</p>
+                        <div class="square button-demo close lower flip">5</div>
+                        <p>The level of the SPELL is lower than 5.</p>
+                        <div class="square button-demo close flip">V, S</div>
+                        <p>The SPELL's components contain Verbal and Somatic Components.</p>
+                        <div class="square button-demo nope flip">V, S, M</div>
+                        <p>The SPELL's components do not contain every component listed.</p>
+                    </div>
+
                 </div>
 
-            </div>
+                <!-- Game Container -->
+                <div id="board-container">
+                    <div id="board">
+                        <div class="sqinfo desktop-desc">
+                            <h2>Guessed Spell</h2>
+                        </div>
+                        <div class="sqinfo">
+                            <h2>Level</h2>
 
-            <!-- Game Container -->
-            <div id="board-container">
-                <div id="board">
-                    <div class="sqinfo">
-                        <h2>Guessed Spell</h2>
-                    </div>
-                    <div class="sqinfo">
-                        <h2>Level</h2>
-                    </div>
-                    <div class="sqinfo">
-                        <h2>School</h2>
-                    </div>
-                    <div class="sqinfo">
-                        <h2>Duration</h2>
-                    </div>
-                    <div class="sqinfo">
-                        <h2>Requires Concentration</h2>
-                    </div>
-                    <div class="sqinfo">
-                        <h2>Components</h2>
+                        </div>
+                        <div class="sqinfo">
+                            <h2 >School</h2>
+                        </div>
+                        <div class="sqinfo">
+                            <h2>Duration</h2>
+                        </div>
+                        <div class="sqinfo">
+                            <h2 class="desktop-desc">Requires Concentration</h2>
+                            <h2 class="mobile-desc">Conc.</h2>
+                        </div>
+                        <div class="sqinfo">
+                            <h2 class="desktop-desc">Components</h2>
+                            <h2 class="mobile-desc">Comp.</h2>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="inputContainer">
-        <!-- Input Box -->
-        <label id="spellLabel" for="browser">Spell:</label>
-        <h3 id="spellResult">Mordenkainen's Magnificent Mansion</h3>
-        <input list="spells" name="spell" id="spellInput">
-        <input type="submit" id="spellSubmit" value="Submit">
+        <div id="inputContainer">
+            <!-- Input Box -->
+            <label id="spellLabel" for="browser">Spell:</label>
+            <h3 id="spellResult">Mordenkainen's Magnificent Mansion</h3>
+            <input list="spells" name="spell" id="spellInput">
+            <input type="submit" id="spellSubmit" value="Submit">
 
-        <datalist id="spells">
-        </datalist>
-    </div>
-    <div id="shareContainer">
-        <h2>Share</h2>
-        <div id="shareContent">
-            <pre id="shareEmoji" class="emoji"></pre>
-            <div id="shareButtons">
-                <button class="copy-to-clipboard" id="copy-straight" onclick="copy_to_clipboard(false)">Copy to clipboard</button>
-                <button class="copy-to-clipboard" id="copy-discord" onclick="copy_to_clipboard(true)">Copy to clipboard (Discord format)</button>
+            <datalist id="spells">
+            </datalist>
+        </div>
+        <div id="shareContainer">
+            <h2>Share</h2>
+            <div id="shareContent">
+                <pre id="shareEmoji" class="emoji"></pre>
+                <div id="shareButtons">
+                    <button class="copy-to-clipboard" id="copy-straight" onclick="copy_to_clipboard(false)">Copy to
+                        clipboard</button>
+                    <button class="copy-to-clipboard" id="copy-discord" onclick="copy_to_clipboard(true)">Copy to
+                        clipboard (Discord format)</button>
+                </div>
             </div>
         </div>
+        <footer id="aboutme">
+            <p>by <a target="_blank" rel="noreferrer noopener external author"
+                    href="http://twitter.com/Sarexicus">@Sarexicus</a></p>
+            <p>based on <a target="_blank" rel="noreferrer noopener external"
+                    href="https://www.powerlanguage.co.uk/wordle/">Wordle</a></p>
+            <p>with fonts from <a target="_blank" rel="noreferrer noopener external"
+                    href="https://github.com/jonathonf/solbera-dnd-fonts">Solbera</a></p>
+            <p>data formatted from <a target="_blank" rel="noreferrer noopener external"
+                    href="https://www.reddit.com/r/DnD5e/comments/k3zv2l/dnd_5e_spells_and_summons_block_google_sheets_and/">u/kal-stormlight</a>
+            </p>
+
+        </footer>
     </div>
-    <footer id="aboutme">
-        <p>by <a target="_blank" rel="noreferrer noopener external author" href="http://twitter.com/Sarexicus">@Sarexicus</a></p>
-        <p>based on <a target="_blank" rel="noreferrer noopener external" href="https://www.powerlanguage.co.uk/wordle/">Wordle</a></p>
-        <p>with fonts from <a target="_blank" rel="noreferrer noopener external" href="https://github.com/jonathonf/solbera-dnd-fonts">Solbera</a></p>
-        <p>data formatted from <a target="_blank" rel="noreferrer noopener external" href="https://www.reddit.com/r/DnD5e/comments/k3zv2l/dnd_5e_spells_and_summons_block_google_sheets_and/">u/kal-stormlight</a></p>
-        
-    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
     <script defer type="text/javascript" src="wizardle/wizardle.js"></script>
 </body>

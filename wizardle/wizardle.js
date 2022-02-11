@@ -25,6 +25,9 @@ function load_save_storage()
     if(storedNames)
     {
         set_darkvision(storedNames);
+    } else
+    {
+        set_darkvision(true);
     }
 
     // var localProg = JSON.parse(localStorage.getItem("local_progress"));
@@ -122,6 +125,7 @@ function create_squares()
         }
         let square = document.createElement("div");
         square.classList.add("square");
+        square.setAttribute("lang","en");
         square.setAttribute("id", "square" + (i+1))
         gameBoard.appendChild(square);
         spElements[spElements.length-1].push(square);
@@ -288,7 +292,7 @@ function make_guess(event)
 function find_spell(inp, save = false)
 {
     inp = inp.toLowerCase().replace(/\(.*\)/,"").trim();
-    
+
     var result = spell_list.find(obj => {
         return obj.Name.toLowerCase().trim() === inp
     });

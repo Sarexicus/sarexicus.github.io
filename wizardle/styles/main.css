@@ -10,13 +10,12 @@ html
     height:100%;
 }
 
-body
+#everything-container
 {
     font-family: "scaly_sans_capsregular";
-    background: linear-gradient(var(--color-tone-7) 70%, var(--gradient-tone)) ;
+    background: linear-gradient(var(--color-tone-7) 70%, var(--gradient-tone));
+    min-height: 100vh;
 }
-
-
 
 header
 {
@@ -35,6 +34,7 @@ header
     display: flex;
     height: 100%;
     align-items: center;
+    justify-content: start;
     flex-direction: column;
 }
 
@@ -52,6 +52,7 @@ header
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: start;
 }
 
 #board-container
@@ -61,6 +62,7 @@ header
     align-items: center;
     flex-grow: 1;
     overflow: hidden;
+    justify-content: start;
 }
 
 #board
@@ -391,4 +393,9 @@ a
 a:visited
 {
     color: var(--link-tone-visited);
+}
+
+.mobile-desc
+{
+    display: none;
 }
