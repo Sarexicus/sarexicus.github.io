@@ -59,7 +59,8 @@ fetch("./wizardle/5e_spells.json")
         spell_list = out;
         spell_list.forEach(element => {
             const node = document.createElement("option");
-            node.setAttribute("value", element.Name);
+            lv = (element.Level == 0) ? "Cantrip" : element.Level;
+            node.setAttribute("value", element.Name + " (" + lv + ")");
             spellOptions.appendChild(node);
         });
         initialise();
