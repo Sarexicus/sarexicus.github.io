@@ -395,7 +395,7 @@ function copy_to_clipboard(discord)
     var decor = "Wizardle " + get_date() + " " + (currentGuessIndex).toString() + "/7";
 
     decor += "\n\n" + ((discord) ? outputEmojiSpoilers : outputEmoji);
-    decor += "[website]";
+    decor += "https://sarexicus.github.io/wizardle.html";
 
     var element = (discord) ? document.getElementById("copy-discord") : document.getElementById("copy-straight") 
     element.innerText = "(Copied!)";
