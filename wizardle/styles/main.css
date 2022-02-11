@@ -1,0 +1,394 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+
+html
+{
+    width:100%;
+    height:100%;
+}
+
+body
+{
+    font-family: "scaly_sans_capsregular";
+    background: linear-gradient(var(--color-tone-7) 70%, var(--gradient-tone)) ;
+}
+
+
+
+header
+{
+    border-bottom: 1px solid rgb(58, 58, 60);
+}
+
+.title {    
+    color: var(--color-tone-1);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.4rem 0 0.4rem 0;
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+#inputContainer
+{
+    margin: 0 auto;
+    width:500px;
+    display: flex;
+    justify-content: center;
+}
+
+#game {
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#board-container
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#board
+{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    
+    min-height: 0;  /* NEW */
+    min-width: 0;   /* NEW; needed for Firefox */
+}
+
+.square
+{
+    font-family: 'scaly_sansregular';
+    border: 2px solid var(--color-tone-4);
+    min-width: 120px;
+    min-height: 60px;
+    font-size: 1.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: bold;
+}
+
+.sqinfo
+{
+    font-family: 'scaly_sansregular';
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 0.8rem;
+    color: var(--color-tone-1);
+    text-align: center;
+}
+
+.sqGuess
+{
+    font-family: 'scaly_sansregular';
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-tone-1);
+    text-align: center;
+    /* font-weight: bold; */
+}
+
+.sqGuess.glow
+{
+	animation: glow-subside 1s ease-in-out;
+    text-shadow: none;
+    opacity: 1;
+}
+
+@keyframes glow-subside {
+	from {
+        opacity: 0;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+	}
+	to {
+        opacity: 1;
+        text-shadow: none;
+	}
+}
+
+
+#spellInput
+{
+    min-height: 24px;
+    width:192px;
+    align-self: center;
+    margin: 0 auto;
+    /* flex-grow: 2; */
+}
+
+#spellSubmit
+{
+    width:75px;
+    height:40px;
+}
+
+#spellLabel
+{
+    color: var(--color-tone-1);
+    font-size:1.5rem;
+}
+
+
+.square.flip {
+	animation: 0.5s linear flip;
+}
+
+@keyframes flip {
+	0% {
+		transform: rotateX(0deg);
+	}
+	50% {
+		transform: rotateX(90deg);
+	}
+	100% {
+		transform: rotateX(0deg);
+	}
+}
+
+.square.correct-guess {
+	animation: 0.4s linear dance;
+    box-shadow: 0px 0px 5px var(--magic-tone);
+    border: 2px solid var(--magic-tone);
+}
+
+@keyframes dance {
+	0% {
+		transform: translateY(0);
+        box-shadow: none;
+	}
+	50% {
+		transform: translateY(-20px);
+        box-shadow: 0px 0px 2px var(--magic-tone);
+	}
+	100% {
+		transform: translateY(0);
+        box-shadow: 0px 0px 5px var(--magic-tone);
+        border: 2px solid var(--magic-tone);
+	}
+}
+
+.square.correct
+{
+    background: var(--squareGreen);
+}
+
+.square.close
+{
+    background: var(--squareYellow);
+}
+
+.square.nope
+{
+    background: var(--color-tone-3);
+}
+
+.square.lower
+{
+    background-image: url("../images/arrow_lower.png");
+}
+
+.square.higher
+{
+    background-image: url("../images/arrow_higher.png");
+}
+
+#shareContainer
+{
+    visibility: hidden;
+    background-color: var(--color-tone-4);
+    width: 300px;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 0 auto;
+    text-align: center;
+	color: var(--color-tone-1);
+}
+
+#shareContent
+{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+#shareEmoji
+{
+    font-size: 1em;
+}
+
+#shareContainer h2
+{
+    margin-bottom: 8px;
+}
+
+#shareButtons
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 192px;
+}
+
+.copy-to-clipboard {
+	background-color: var(--color-tone-6);
+	border-color: var(--color-tone-3);
+	color: var(--color-tone-1);
+	padding: 4px;
+	font-family: "scaly_sans_capsregular";
+    font-size: 1em;
+
+    cursor: pointer;
+}
+
+#spellResult
+{
+    display: none;
+    padding: 4px 4px 0px 10px;
+    color: var(--color-tone-1);
+    margin-bottom: 10px;
+}
+
+.header-button
+{
+    border:none;
+    height: 4em;
+    width: 4em;
+    background-color: var(--color-tone-7);
+    cursor: pointer;
+}
+
+.header-right
+{
+    float: right;
+}
+
+.header-left
+{
+    float: left;
+}
+
+.header-button>i
+{
+    font-size: 2em;
+    color: var(--color-tone-1);
+}
+
+#help-modal-container
+{
+    display: none; 
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+.modal-content
+{
+    background-color: var(--color-tone-6);
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 2px solid var(--color-tone-5);
+    width: 30%; /* Could be more or less, depending on screen size */
+    min-width: 500px;
+
+    color: var(--color-tone-1);
+    animation-name: slidein;
+    animation-duration: 0.4s;
+}
+
+.modal-content h3
+{
+    padding-top: 12px;
+}
+
+.modal-content p
+{
+    font-family: 'scaly_sansregular';
+}
+
+.modal-content .square
+{
+    margin-top: 12px;
+}
+
+/* The Close Button */
+.close-button
+{
+    color: var(--color-tone-3);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover, .close-button:focus 
+{
+    color: var(--color-tone-1);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes slidein {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+.button-demo
+{
+    height: 54px;
+    width: 142px;
+}
+
+#aboutme
+{
+    position: absolute;
+    bottom:0;
+    right:0;
+    text-align: right;
+
+    font-family: "scaly_sansregular";
+    background-color: var(--color-tone-6);
+    color: var(--color-tone-1);
+
+    padding:8px;   
+    border-top-left-radius: 12px;
+}
+
+a
+{
+    color: var(--link-tone);
+}
+a:visited
+{
+    color: var(--link-tone-visited);
+}

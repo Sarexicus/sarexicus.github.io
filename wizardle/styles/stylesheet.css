@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'scaly_sans_capsregular';
+    src: url('scaly_sans_caps-webfont.woff2') format('woff2'), url('scaly_sans_caps-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'scaly_sansregular';
+    src: url('scaly_sans-webfont.woff2') format('woff2'), url('scaly_sans-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
