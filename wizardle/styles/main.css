@@ -399,3 +399,15 @@ a:visited
 {
     display: none;
 }
+
+#guide-container
+{
+    display: block;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-tone-5);
+    width:200px;
+    padding:8px;
+    border-radius: 8px;
+}
