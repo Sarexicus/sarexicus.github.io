@@ -287,8 +287,8 @@ function make_guess(event)
 
 function find_spell(inp, save = false)
 {
-    inp = inp.toLowerCase().trim();
-
+    inp = inp.toLowerCase().replace(/\(.*\)/,"").trim();
+    
     var result = spell_list.find(obj => {
         return obj.Name.toLowerCase().trim() === inp
     });
