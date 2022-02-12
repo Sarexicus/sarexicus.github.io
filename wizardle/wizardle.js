@@ -225,7 +225,7 @@ function parse_concentration(delay, element, conc, ref)
 {
     var comp = (conc === ref);
 
-    element.innerText = (conc) ? "✅" : "❌";
+    element.innerText = (conc) ? "yes" : "no";
     set_correctness(delay, element, comp, false, false, false);
 }
 
