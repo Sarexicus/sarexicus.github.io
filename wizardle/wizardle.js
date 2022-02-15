@@ -10,6 +10,8 @@ var spElements = [];
 var currentGuessIndex = 0;
 var spellToGuess = {};
 
+var win_today = false;
+
 var outputEmoji = "";
 var outputEmojiSpoilers = "";
 
@@ -351,6 +353,7 @@ function win_condition(result)
 {
     if(compare_elements(result))
     {
+        win_today = true;
         document.getElementById("spellInput").disabled = true;
         document.getElementById("spellSubmit").disabled = true;
         spElements[currentGuessIndex].forEach(element => {
@@ -376,10 +379,10 @@ function game_over(win)
     document.getElementById("spellSubmit").style.display = "none";
     document.getElementById("spellResult").style.display = "block";
     document.getElementById("spellResult").innerText = spellToGuess.Name;
-    generate_share_link();
+    generate_share_link(win);
 }
 
-function generate_share_link()
+function generate_share_link(win)
 {
     document.getElementById("shareContainer").style.visibility = "visible"; 
 
@@ -397,7 +400,8 @@ function get_date()
 
 function copy_to_clipboard(discord)
 {
-    var decor = "Wizardle " + get_date() + " " + (currentGuessIndex).toString() + "/7";
+    var count = (win_today) ? (currentGuessIndex).toString() : "X";
+    var decor = "Wizardle " + get_date() + " " + count + "/7";
 
     decor += "\n\n" + ((discord) ? outputEmojiSpoilers : outputEmoji);
     decor += "https://sarexicus.github.io/wizardle";
