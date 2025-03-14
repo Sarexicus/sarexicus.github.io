@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Greened Support </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link href="greened/styles.css" rel="stylesheet">
+        <script>
+            function onGreened() {
+                document.querySelector("#greened").style.display = "block";
+                document.querySelector("#green-lore").play();
+                window.setTimeout(function () { 
+                    document.querySelector("#greened").style.visibility = "visible";
+                    document.querySelector("#greened").style.opacity = "1";
+                }, 800);
+
+            }
+        </script>
+    </head>
+    <body>
+        <main>
+            <header>
+                <h1>NATIONAL GREEN INSTITUTE</h1>
+                <nav id="definitely-real-navigation">
+                    <menu>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">About</a></li>
+                    </menu> 
+                </nav>
+            </header>
+            <section id="valuable-info">
+                <h1> Being greened </h1>
+                <aside>
+                    <img src="greened/iamgreened.png">
+                </aside>
+                <p> 
+                    Being greened is a situation that happens to many adults. Over 80% of adults report being greened at some point in their lives. <br />
+                    If you find yourself greened, it might be embarrassing, but you are not alone.
+                </p>
+                <p>
+                    Perhaps you have been greened at the workplace, or in the comfort of your own home. These situations are most common, but people can find
+                    themselves greened in a variety of circumstances, and often it is hard to know what to do next.
+                </p>
+                <p>
+                    Regardless of circumstance, you have options and rights as a greened individual. 
+                </p>
+                <button onclick="onGreened()">More info about being greened</button>
+            </section>
+            <audio id="green-lore" src="greened/lore.mp3" loop></audio>
+            <section id="greened" class="offset">
+                <h1 class="marquee">lore about <span class="green">green</span></h1>
+                <img src="greened/greened.png">
+                <p class="lyrics">
+                    🎶 <br />
+                    this is the PAGE <br />
+                    where we're supposed to learn some Lore™ about the <span class="green">green</span>! <br />
+                    (Lore™ about the <span class="green">green</span> PAGE) <br />
+                    where is the information all about the <span class="green">green</span>?? <br />
+                    (all about the <span class="green">green</span>) <br />
+                    
+                    this is the section where we should find (find the answer) <br />
+                    how this Technology™ takes <span class="green">green</span><br />
+                    this is the information Highlight (of the story) <br />
+                    now we should learn to be alright <br />
+                    <br />
+                    <br />
+                    (<span class="green">green</span>ed solo)
+                    🎵
+                </p>
+            </section>
+        </main>
+    </body>
+</html>

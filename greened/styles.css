@@ -1,0 +1,225 @@
+:root {
+    --left: -20%;
+    --right: -20%;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ccc;
+    margin: 0;
+
+    & h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0px 12px;
+        padding-block: 12px;
+    }
+
+    & menu {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+        /* height: 48px; */
+
+        & li {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+            & a {
+                text-align: center;
+                display: block;
+                height: 100%;
+                padding: 12px 24px;
+                /* padding: 12px; */
+                /* height: px; */
+                align-content: center;
+                color: white;
+                background-color: rgb(31, 94, 31);
+                text-decoration: underline;
+                &:hover {
+                    background-color: rgb(39, 126, 39);
+                }
+            }
+        }
+    }
+}
+
+.green {
+    color: #01c160;
+}
+
+.offset {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: 1s;
+    padding: 5% 20%;
+    position: absolute;
+    inset: 0;
+    background-color: black;
+}
+
+#valuable-info {
+    padding: 8px;
+    background-color: #b1f3b5;
+    padding-bottom: 24px;
+    box-shadow: 0px 4px 12px #b1f3b5;
+
+    & h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    & p {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    
+    & button {
+        padding: 4px 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 4px 4px gray;
+        cursor: pointer;
+        font-size: 1.25em;
+        border-radius: 0;
+        border: none;
+    }
+
+    & aside {
+        float: right;
+        & img {
+            object-fit: cover;
+            width: 512px;
+            height: 512px;
+        }
+    }
+}
+
+#greened {
+    & h1, & p {
+        font-family: "Georgia", serif;
+    }
+    
+    & img {
+        padding-top: 4em;
+    }
+    & h1 {
+        font-size: 4rem;
+        color: white;
+    }
+    
+    & p {
+        padding-top: 1em;
+        line-height: 1.5em;
+        font-size: 1.5em;
+        color: white;
+    }
+} 
+
+/*
+    Marquee
+*/
+
+@-webkit-keyframes rightThenLeft {
+    0% {   left: var(--left); }
+    50% {  left: 0%;   }
+    100% { left: var(--right);  }
+}
+@keyframes rightThenLeft {
+    0% {   left: var(--left); }
+    50% {  left: 0%;   }
+    100% { left: var(--right);  }
+}
+
+@keyframes special {
+    0% {text-shadow: 1px 1px 5px #01c160}
+    100% {text-shadow: 5px 5px 50px green}
+}
+@-webkit-keyframes special {
+    0% {text-shadow: 1px 1px 5px #01c160}
+    100% {text-shadow: 5px 5px 50px green}
+}
+
+@keyframes rotate {
+        0% {   transform: rotate(-15deg)}
+    50% {  transform: rotate(0deg)}
+    100% { transform: rotate(15deg)}
+}
+@-webkit-keyframes rotate {
+        0% {   transform: rotate(-15deg)}
+    50% {  transform: rotate(0deg)}
+    100% { transform: rotate(15deg)}
+}
+
+.marquee {
+    position: relative;
+    display: block;
+    margin: 0;
+    text-align: center;
+
+    transform-origin: center center;
+
+    white-space: nowrap;
+
+    -webkit-animation: rightThenLeft, special, rotate;
+    -webkit-animation-duration: 3s, 3s, 8s;
+    -webkit-animation-direction: alternate, alternate, alternate;
+    -webkit-animation-timing-function: linear, linear, linear;
+    -webkit-animation-iteration-count: infinite, infinite, infinite;
+
+    animation: rightThenLeft, special, rotate;
+    animation-duration: 3s, 3s, 8s;
+    animation-direction: alternate, alternate, alternate;
+    animation-timing-function: linear, linear, linear;
+    animation-iteration-count: infinite, infinite, infinite;
+}
+
+@media screen and (max-width: 600px) {
+
+    header {
+        & menu {
+            justify-content: space-between;
+            & li {
+                flex-grow: 1;
+            };
+        }
+    }
+
+    #valuable-info {
+        padding: 8px;
+    
+        & aside {
+            float: none;
+            max-width: 100%;
+
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .offset {
+        padding: 4px;
+        text-align: center;
+        overflow-x: hidden;
+    }
+    #greened {
+        & h1 {
+            padding-top: 1em;
+            font-size: 2.5em;
+        }
+    
+        & p {
+            font-size: 1.25em;
+        }
+    }
+    
+
+    :root {
+        --left: -30px;
+        --right: 30px;
+    }
+}
