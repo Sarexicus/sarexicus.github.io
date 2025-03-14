@@ -58,7 +58,7 @@ header {
     opacity: 0;
     transition-duration: 1s;
     padding: 5% 20%;
-    position: absolute;
+    position: fixed;
     inset: 0;
     background-color: black;
 }
